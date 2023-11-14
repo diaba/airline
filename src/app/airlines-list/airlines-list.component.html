@@ -1,0 +1,38 @@
+<h2 class="textStyle text-center">Welcome to Infy Airlines</h2>
+<div class="row" *ngIf="airlinesArray$?.length">
+  <!-- Iterate over the airlinesArray to render the cards for all the airlines -->
+  <div class="col-md-3 mt-3" id="airlineCard" *ngFor="let flight of airlinesArray$ | async">
+    <div class="card shadow" style="opacity: 0.8;">
+
+      {{flight.airlinesName}}
+      <!--
+                modify the img tag to display the image using the airlinesImage property
+                of all the airlines and set the alternate text as the airlines id
+            -->
+      <!-- <img id="airlineImage" height="200px" class="card-img-top"> -->
+      <div class="card-body text text-center">
+        <h6 id="cardTitle">
+          <!-- display the airlines name and airlines id as shown in the screenshots -->
+        </h6>
+        <div class="cardData">
+          <h6 id="fare">
+            Fare:
+            <!-- display the airlines fare with proper currency symbol -->
+          </h6>
+        </div>
+        <!--
+                    1. If the airlines is Cancelled, the button should be disabled,
+                    2. Invoke the showBookingForm method with proper airlines id value
+                -->
+        <button class="btn btn-outline-dark btn-sm" id="bookTicket">
+          Book Ticket
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!airlinesArray?.length">
+  <h1 class="text text-center" id="errorMessage">
+    <!-- display the error message here -->
+  </h1>
+</div>
